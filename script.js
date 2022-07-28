@@ -1,11 +1,19 @@
-let cor = 'amarelo' // vermelho,verde,amarelo //
+const circles = document.querySelectorAll('.circle')
+let activeLight = 2;
 
-if (cor.toLowerCase() == 'vermelho'){
-    document.getElementById('vermelho').style.backgroundColor = '#D9304F'
-} else if (cor.toLowerCase() == 'amarelo'){
-    document.getElementById('amarelo').style.backgroundColor = '#F2B84B'
+setInterval(() => {
+	changeLight();
+}, 3000);
 
-} else if (cor.toLowerCase() == 'verde') {
-    document.getElementById('verde').style.backgroundColor = '#4CA649'
-
-} 
+function changeLight() {
+	circles[activeLight].className = 'circle';
+	activeLight--;
+	
+	if(activeLight < 0 ) {
+		activeLight = 2;
+	}
+	
+	const currentLight = circles[activeLight]
+	
+	currentLight.classList.add(currentLight.getAttribute('color'));
+}
